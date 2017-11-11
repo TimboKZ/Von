@@ -1,3 +1,7 @@
+# IntelliJ and Vim
+/.idea/
+*.swp
+
 # Logs
 logs
 *.log
