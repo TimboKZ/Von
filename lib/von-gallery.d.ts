@@ -10,7 +10,9 @@ declare module 'von-gallery' {
 
     export interface VonOptions {
         directory: string;
-        output?: string;
+        template: string;
+        templatePath: string;
+        output: string;
         config?: string;
     }
 

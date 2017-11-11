@@ -1,0 +1,14 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+
+        meta(property='og:title', content=title)
+        title= title
+
+        meta(name='description', content=description)
+        meta(property='og:description', content=description)
+    body
+        for group in groups
+            for image in group.images
+                img(src=image.path)
