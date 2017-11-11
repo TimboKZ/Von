@@ -26,7 +26,7 @@ let options = {
     directory: process.cwd(),
 };
 if (args.schema) {
-    let specialString = `vonvonvon%%123123`;
+    let specialString = 'vonvonvon%%123123';
     const replacer = (k, v) => v === undefined ? specialString : v;
     Von.generateSchema(options)
         .then(schema => console.log(JSON.stringify(schema, replacer, 2).replace(new RegExp(`"${specialString}"`, 'g'), 'undefined')));
