@@ -7,10 +7,15 @@
 
 const path = require('path');
 
+/** @type {string} */
 let galleriesPath = path.join(__dirname, 'galleries');
 
+/**
+ * @type {{galleriesPath: string, emptyDir: string, noImagesDir: string, imagesOnlyDir: string}}
+ */
 module.exports = {
     galleriesPath,
-    emptyDirectory: path.join(galleriesPath, 'empty-directory'),
-    directoryWithNoImages: path.join(galleriesPath, 'no-images'),
+    emptyDir: path.join(galleriesPath, 'empty-directory'),
+    noImagesDir: path.join(galleriesPath, 'no-images'),
+    imagesOnlyDir: path.join(galleriesPath, 'images-only'),
 };

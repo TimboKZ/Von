@@ -37,6 +37,7 @@
     "joi": "^13.0.1"
   },
   "devDependencies": {
+    "@types/bluebird": "^3.5.18",
     "@types/chai": "^4.0.4",
     "@types/joi": "^13.0.0",
     "@types/mocha": "^2.2.44",
