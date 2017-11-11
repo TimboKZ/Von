@@ -51,23 +51,23 @@ html
 
     body
         for group in groups
-            div.group(data-layout=group.images.length)
-                for image in group.images
-                    a.image(href=image.path, data-src=image.path)
-                        img(src=image.path, data-src=image.path)
+            div.group
+                div.images(data-layout=group.images.length)
+                    for image in group.images
+                        a.image(href=image.path, data-src=image.path)
+                            img(src=image.path, data-src=image.path)
                 div.source= 'Source: '
                     a(href=group.source)= group.source
 
         script(src='https://code.jquery.com/jquery-3.2.1.min.js')
         script(src='https://cdn.rawgit.com/stylehatch/photoset-grid/5aeb7d9cc7e4930eae8fe9ce6b53d33e706d0941/jquery.photoset-grid.min.js')
-        script(src='https://raw.github.com/dinbror/blazy/master/blazy.min.js')
         script(src='https://cdn.jsdelivr.net/combine/npm/lightgallery,npm/lg-autoplay,npm/lg-fullscreen,npm/lg-hash,npm/lg-pager,npm/lg-share,npm/lg-thumbnail,npm/lg-video,npm/lg-zoom')
         script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js')
         script(type='text/javascript').
             $(document).ready(function () {
-                var groups = $('.group');
-                groups.lightGallery({});
-                groups.photosetGrid({
+                var images = $('.images');
+                images.lightGallery({});
+                images.photosetGrid({
                     gutter: '25px'
                 });
             });
