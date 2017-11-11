@@ -47,6 +47,17 @@ describe('Von (without config)', () => {
             .then(schema => assert.equal(schema.groups.length, count))
     );
 
+    it('should add some default title and description with images but no config', () =>
+        Promise.resolve()
+            .then(() => Von.generateSchema({directory: constants.imagesOnlyDir}))
+            .then(schema => {
+                assert.isDefined(schema.title);
+                assert.isNotEmpty(schema.title);
+                assert.isDefined(schema.description);
+                assert.isNotEmpty(schema.description);
+            })
+    );
+
     it('should correctly generate HTML page with images but no config', () =>
         Promise.resolve()
             .then(() => {
