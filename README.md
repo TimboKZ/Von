@@ -19,7 +19,25 @@ Now go into any folder on your computer with some images (make sure it's not too
 von
 ```
 
-This will create an `index.html` with a gallery of all of the images in your directory. 
+This will create an `index.html` file with a gallery of all of the images in your directory. For now it will just look
+like a bunch of pictures arranged in a nice grid since you haven't done any configuration. 
 
-> Von has many more features, including `vonrc.js` config. I'll add more documentation and examples once these features
-are stable.
+> Von is still in active development, some APIs may change.
+
+# Philosophy behind Von
+
+Von was meant to be very simple to use. In most cases you will only ever need to use the `von` command. Of course, you
+might want to add some configuration too - this can all be done by passing additional arguments to `von`, e.g.
+`von -o custom-output.html -t custom-template.pug --recursive`.
+
+You can also create a `vonrc.js` or `vonrc.json` (choose one). Von will recognise both files as its config, but
+`vonrc.js` gives you my freedom since you have all JavaScript features at your disposal. Config lets you do anything
+that command line arguments can achieve, plus a little extra. Namely, you need the config to define groups. If you
+have defined a config, you no longer need to pass extra arguments to `von` since it will import data from the config. 
+
+If you want to automate the process even further, you can add Von as a dependency to your NPM project
+(`npm install --save von-gallery`) and use it as a CommonJS module (`const Von = require('von-gallery');`). In fact,
+the command line tool is simply a wrapper around this module, so both offer identical functionality.
+
+It's **very important** to remember that Von is a *simple* gallery generator - if you want to develop something complex
+you should probably use a proper static site generator. 
