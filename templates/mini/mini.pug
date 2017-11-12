@@ -52,7 +52,7 @@ html
     body
         for group in groups
             div.group
-                div.images(data-layout=group.images.length)
+                div.images(data-layout=group.layout)
                     for image in group.images
                         a.image(href=image.path, data-src=image.path)
                             img(src=image.path, data-src=image.path)

@@ -5,11 +5,11 @@
  * @license MIT
  */
 
-const {it, before, describe} = require('mocha');
+const {it, describe} = require('mocha');
 const assert = require('chai').assert;
 const path = require('path');
 const Promise = require('bluebird');
-const fs = Promise.promisifyAll(require('fs'));
+const fse = require('fs-extra');
 const constants = require('./test-constants');
 
 const Von = require('../lib/Von');
@@ -22,26 +22,26 @@ describe('Von (without config)', () => {
 
     it('should not crash and create no output on an empty directory', () =>
         Promise.resolve()
-            .then(() => fs.rmdirAsync(constants.emptyDir))
-            .then(() => fs.mkdirAsync(constants.emptyDir))
+            .then(() => fse.rmdir(constants.emptyDir))
+            .then(() => fse.mkdir(constants.emptyDir))
             .then(() => Von.run({directory: constants.emptyDir}))
-            .then(() => fs.readdirAsync(constants.emptyDir))
+            .then(() => fse.readdir(constants.emptyDir))
             .then(files => assert.equal(files.length, 0))
     );
 
     it('should do nothing on a directory with no images', () =>
         Promise.resolve()
-            .then(() => fs.readdirAsync(constants.noImagesDir))
+            .then(() => fse.readdir(constants.noImagesDir))
             .then(files => count = files.length)
             .then(() => Von.run({directory: constants.noImagesDir}))
-            .then(() => fs.readdirAsync(constants.noImagesDir))
+            .then(() => fse.readdir(constants.noImagesDir))
             .then(files => assert.equal(files.length, count))
     );
 
     it('should correctly initialise groups with images but no config', () =>
         Promise.resolve()
-            .then(() => fs.unlinkAsync(path.join(constants.imagesOnlyDir, outputFile)))
-            .then(() => fs.readdirAsync(constants.imagesOnlyDir))
+            .then(() => fse.remove(path.join(constants.imagesOnlyDir, outputFile)))
+            .then(() => fse.readdir(constants.imagesOnlyDir))
             .then(files => count = files.length)
             .then(() => Von.generateSchema({directory: constants.imagesOnlyDir}))
             .then(schema => assert.equal(schema.groups.length, count))
@@ -68,7 +68,7 @@ describe('Von (without config)', () => {
                 };
             })
             .then(() => Von.run(vonOptions))
-            .then(() => fs.accessAsync(outputPath, fs.constants.R_OK))
+            .then(() => fse.access(outputPath, fse.constants.R_OK))
     );
 
 });
