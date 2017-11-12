@@ -40,4 +40,4 @@ If you want to automate the process even further, you can add Von as a dependenc
 the command line tool is simply a wrapper around this module, so both offer identical functionality.
 
 It's **very important** to remember that Von is a *simple* gallery generator - if you want to develop something complex
-you should probably use a proper static site generator. 
+you should probably use a proper [static site generator](https://www.staticgen.com/). 
