@@ -1,0 +1,74 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+
+        meta(property='og:title', content=title)
+        title= title
+
+        link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/lightgallery@1.6.4/dist/css/lightgallery.min.css')
+
+        meta(name='description', content=description)
+        meta(property='og:description', content=description)
+
+        style(type='text/css').
+            body {
+                font-family: Tahoma, sans-serif;
+                background-color: #111;
+                max-width: 1280px;
+                margin: 0 auto;
+            }
+
+            body img {
+                max-width: 100%;
+            }
+
+            .group {
+                position: relative;
+                padding: 100px 0;
+            }
+
+            .group .sizer {
+                position: relative;
+                width: 10%;
+            }
+
+            .group .image {
+                text-align: center;
+                position: relative;
+                display: block;
+            }
+
+            .group .source {
+                text-align: center;
+                padding-top: 20px;
+                color: #666;
+            }
+
+            .group .source a {
+                color: #777 !important;
+            }
+
+    body
+        for group in groups
+            div.group
+                div.images(data-layout=group.images.length)
+                    for image in group.images
+                        a.image(href=image.path, data-src=image.path)
+                            img(src=image.path, data-src=image.path)
+                div.source= 'Source: '
+                    a(href=group.source)= group.source
+
+        script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+        script(src='https://cdn.rawgit.com/stylehatch/photoset-grid/5aeb7d9cc7e4930eae8fe9ce6b53d33e706d0941/jquery.photoset-grid.min.js')
+        script(src='https://cdn.jsdelivr.net/combine/npm/lightgallery,npm/lg-autoplay,npm/lg-fullscreen,npm/lg-hash,npm/lg-pager,npm/lg-share,npm/lg-thumbnail,npm/lg-video,npm/lg-zoom')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js')
+        script(type='text/javascript').
+            $(document).ready(function () {
+                var images = $('.images');
+                images.lightGallery({});
+                images.photosetGrid({
+                    gutter: '25px'
+                });
+            });
+

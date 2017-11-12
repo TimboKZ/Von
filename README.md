@@ -31,9 +31,9 @@ might want to add some configuration too - this can all be done by passing addit
 `von -o custom-output.html -t custom-template.pug --recursive`.
 
 You can also create a `vonrc.js` or `vonrc.json` (choose one). Von will recognise both files as its config, but
-`vonrc.js` gives you my freedom since you have all JavaScript features at your disposal. Config lets you do anything
-that command line arguments can achieve, plus a little extra. Namely, you need the config to define groups. If you
-have defined a config, you no longer need to pass extra arguments to `von` since it will import data from the config. 
+`vonrc.js` gives you more freedom since you have all JavaScript features at your disposal. Config lets you do anything
+that command line arguments can achieve, plus a little extra. Namely, you need the config to define groups. Once you
+have defined a config, simply run `von` in the same directory and Von will automatically import it.
 
 If you want to automate the process even further, you can add Von as a dependency to your NPM project
 (`npm install --save von-gallery`) and use it as a CommonJS module (`const Von = require('von-gallery');`). In fact,
