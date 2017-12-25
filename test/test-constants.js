@@ -18,4 +18,5 @@ module.exports = {
     emptyDir: path.join(galleriesPath, 'empty-directory'),
     noImagesDir: path.join(galleriesPath, 'no-images'),
     imagesOnlyDir: path.join(galleriesPath, 'images-only'),
+    autoGroupsDir: path.join(galleriesPath, 'auto-groups'),
 };

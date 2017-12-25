@@ -38,13 +38,10 @@ describe('Von (without config)', () => {
             .then(files => assert.equal(files.length, count))
     );
 
-    it('should correctly initialise groups with images but no config', () =>
+    it('should correctly group images by integer prefix', () =>
         Promise.resolve()
-            .then(() => fse.remove(path.join(constants.imagesOnlyDir, outputFile)))
-            .then(() => fse.readdir(constants.imagesOnlyDir))
-            .then(files => count = files.length)
-            .then(() => Von.generateSchema({directory: constants.imagesOnlyDir}))
-            .then(schema => assert.equal(schema.groups.length, count))
+            .then(() => Von.generateSchema({directory: constants.autoGroupsDir}))
+            .then(schema => assert.equal(schema.groups.length, 3))
     );
 
     it('should add some default title and description with images but no config', () =>
