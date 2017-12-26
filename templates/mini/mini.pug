@@ -58,12 +58,9 @@ html
             }
 
             .group .placeholder {
+                background-color: #222;
                 padding: 0;
                 margin: 0 auto;
-            }
-
-            .group .placeholder-inner {
-                background-color: #222;
             }
 
             .group .source {
@@ -84,7 +81,9 @@ html
                         .image-wrapper(data-src=image.path, style='flex:' + (image.dimensions.width / image.dimensions.height))
                             a.image-link(href='#' + group.id)
                                 .placeholder(style='max-width:' + image.dimensions.width + 'px;')
-                                    img.image(src=image.path)
+                                    img.image(data-src=image.path)
+                                    noscript
+                                        img.image(src=image.path)
                                     .placeholder-inner(style='padding-bottom: ' + ((image.dimensions.height / image.dimensions.width) * 100) + '%;')
                 if group.source
                     div.source= 'Source: '
@@ -92,9 +91,16 @@ html
         link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/lightgallery@1.6.4/dist/css/lightgallery.min.css')
         script(src='https://code.jquery.com/jquery-3.2.1.min.js')
         script(src='https://cdn.jsdelivr.net/combine/npm/lightgallery,npm/lg-autoplay,npm/lg-fullscreen,npm/lg-hash,npm/lg-pager,npm/lg-share,npm/lg-thumbnail,npm/lg-video,npm/lg-zoom')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.7/jquery.lazy.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.7/jquery.lazy.plugins.min.js')
         script(type='text/javascript').
             $(document).ready(function () {
                 var images = $('.images');
                 images.lightGallery({});
+                $('.image').Lazy({
+                    threshold: (window.screen.height || 2000) * 2,
+                    effect: 'fadeIn',
+                    effectTime: 1000
+                });
             });
 
