@@ -59,8 +59,6 @@ html
 
             .group .placeholder {
                 background-color: #222;
-                padding: 0;
-                margin: 0 auto;
             }
 
             .group .source {
@@ -78,13 +76,13 @@ html
             .group(id=group.id)
                 .images(data-layout=group.layout)
                     for image in group.images
-                        .image-wrapper(data-src=image.path, style='flex:' + (image.dimensions.width / image.dimensions.height))
+                        .image-wrapper(data-src=image.path,
+                        style='flex:' + (image.dimensions.width / image.dimensions.height) + ';max-width:' + image.dimensions.width + 'px;')
                             a.image-link(href='#' + group.id)
-                                .placeholder(style='max-width:' + image.dimensions.width + 'px;')
-                                    img.image(data-src=image.path)
-                                    noscript
-                                        img.image(src=image.path)
-                                    .placeholder-inner(style='padding-bottom: ' + ((image.dimensions.height / image.dimensions.width) * 100) + '%;')
+                                img.image(data-src=image.path)
+                                noscript
+                                    img.image(src=image.path)
+                                .placeholder(style='padding-bottom: ' + ((image.dimensions.height / image.dimensions.width) * 100) + '%;')
                 if group.source
                     div.source= 'Source: '
                         a(href=group.source)= group.source
