@@ -6,7 +6,6 @@ html
         meta(property='og:title', content=title)
         title= title
 
-        link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/lightgallery@1.6.4/dist/css/lightgallery.min.css')
 
         meta(name='description', content=description)
         meta(property='og:description', content=description)
@@ -22,13 +21,20 @@ html
             img {
                 max-width: 100%;
                 height: auto;
-                vertical-align: middle;
             }
 
             .group {
                 position: relative;
                 margin: 200px 0;
                 padding: 5px;
+            }
+
+            .group:first-of-type {
+                margin-top: 100px;
+            }
+
+            .group:last-of-type {
+                margin-bottom: 100px;
             }
 
             .group .images {
@@ -41,10 +47,23 @@ html
                 flex: 1.3;
             }
 
-            .group .image {
-                text-align: center;
+            .group .image-link {
+                position: relative;
                 display: block;
                 margin: 5px;
+            }
+
+            .group .image {
+                position: absolute;
+            }
+
+            .group .placeholder {
+                padding: 0;
+                margin: 0 auto;
+            }
+
+            .group .placeholder-inner {
+                background-color: #222;
             }
 
             .group .source {
@@ -59,19 +78,20 @@ html
 
     body
         for group in groups
-            .group
+            .group(id=group.id)
                 .images(data-layout=group.layout)
                     for image in group.images
-                        .image-wrapper(data-src=image.path, style='flex:'+image.flex)
-                            a.image(href=image.path)
-                                img(src=image.path)
+                        .image-wrapper(data-src=image.path, style='flex:' + (image.dimensions.width / image.dimensions.height))
+                            a.image-link(href='#' + group.id)
+                                .placeholder(style='max-width:' + image.dimensions.width + 'px;')
+                                    img.image(src=image.path)
+                                    .placeholder-inner(style='padding-bottom: ' + ((image.dimensions.height / image.dimensions.width) * 100) + '%;')
                 if group.source
                     div.source= 'Source: '
-                        a(href=group.source)= group.source
-
+                    a(href=group.source)= group.source
+        link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/lightgallery@1.6.4/dist/css/lightgallery.min.css')
         script(src='https://code.jquery.com/jquery-3.2.1.min.js')
         script(src='https://cdn.jsdelivr.net/combine/npm/lightgallery,npm/lg-autoplay,npm/lg-fullscreen,npm/lg-hash,npm/lg-pager,npm/lg-share,npm/lg-thumbnail,npm/lg-video,npm/lg-zoom')
-        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js')
         script(type='text/javascript').
             $(document).ready(function () {
                 var images = $('.images');

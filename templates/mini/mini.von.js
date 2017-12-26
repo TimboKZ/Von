@@ -47,17 +47,7 @@ class MiniTemplate {
      * @return {Promise.<VonSchema>}
      */
     processSchema() {
-        return Promise.resolve()
-            .then(() => {
-                let groupCount = this.schema.groups.length;
-                for (let i = 0; i < groupCount; i++) {
-                    let group = this.schema.groups[i];
-                    for (let k = 0; k < group.images.length; k++) {
-                        let image = group.images[k];
-                        image.flex = image.dimensions.width / image.dimensions.height;
-                    }
-                }
-            });
+        return Promise.resolve();
     }
 
     /**
