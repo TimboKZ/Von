@@ -87,7 +87,7 @@ html
                                     .placeholder-inner(style='padding-bottom: ' + ((image.dimensions.height / image.dimensions.width) * 100) + '%;')
                 if group.source
                     div.source= 'Source: '
-                    a(href=group.source)= group.source
+                        a(href=group.source)= group.source
         link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/lightgallery@1.6.4/dist/css/lightgallery.min.css')
         script(src='https://code.jquery.com/jquery-3.2.1.min.js')
         script(src='https://cdn.jsdelivr.net/combine/npm/lightgallery,npm/lg-autoplay,npm/lg-fullscreen,npm/lg-hash,npm/lg-pager,npm/lg-share,npm/lg-thumbnail,npm/lg-video,npm/lg-zoom')
