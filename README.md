@@ -1,7 +1,12 @@
 # ![](https://s3-eu-central-1.amazonaws.com/foxypanda-ghost/2017/11/von-small.png)
 
+[![npm](https://img.shields.io/npm/v/von-gallery.svg)]()
+[![npm](https://img.shields.io/npm/dt/von-gallery.svg)](https://www.npmjs.com/package/von-gallery)
+
 🖼️🤔 Node.js generator for (static) single page galleries. The default template is responsive and supports lazy loading.
 Available as a CommonJS module and as a command line tool.
+
+Building a single page gallery using a single `von` command:
 
 ![The concept behind Von.](https://s3-eu-central-1.amazonaws.com/foxypanda-ghost/2017/12/von-concept.png)
 
