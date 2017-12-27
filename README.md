@@ -6,7 +6,7 @@
 🖼️🤔 Node.js generator for (static) single page galleries. The default template is responsive and supports lazy loading.
 Available as a CommonJS module and as a command line tool.
 
-Building a single page gallery using a single `von` command:
+Building a single page gallery using just the `von` command:
 
 ![The concept behind Von.](https://s3-eu-central-1.amazonaws.com/foxypanda-ghost/2017/12/von-concept.png)
 
@@ -18,7 +18,7 @@ Install [Node.js](https://nodejs.org/en/), which will automatically install NPM.
 npm install -g von-gallery
 ```
 
-Now go into any folder on your computer with some images (make sure it's not too big) and simply run:
+Now go into any folder on your computer with some images, open terminal, and simply run:
 
 ```bash
 von
