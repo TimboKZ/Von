@@ -8,12 +8,16 @@
 const path = require('path');
 
 /** @type {string} */
+let configDirPath = path.join(__dirname, 'config');
+
+/** @type {string} */
 let galleriesPath = path.join(__dirname, 'galleries');
 
 /**
- * @type {{galleriesPath: string, emptyDir: string, noImagesDir: string, imagesOnlyDir: string}}
+ * @type {Object.<string, string>}
  */
 module.exports = {
+    configDirPath,
     galleriesPath,
     emptyDir: path.join(galleriesPath, 'empty-directory'),
     noImagesDir: path.join(galleriesPath, 'no-images'),
