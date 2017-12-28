@@ -21,11 +21,12 @@ npm install -g von-gallery
 Now go into any folder on your computer with some images, open terminal, and simply run:
 
 ```bash
-von
+von -r
 ```
 
-This will create an `index.html` file with a gallery of all of the images in your directory. For now it will just look
-like a bunch of pictures arranged in a nice grid since you haven't done any configuration. 
+Where `-r` flags stands for "recursive". This will create an `index.html` file with a gallery of all of the images in
+your directory. By default, Von simply groups images either by directory or by prefix (e.g. `prefix-my_image.jpg`) but
+you can adjust this behaviour using the config. 
 
 > Von is still in active development, some APIs may change.
 

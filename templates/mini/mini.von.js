@@ -40,7 +40,7 @@ class MiniTemplate {
             .then(() => this.processSchema())
             .then(() => this.compileTemplate())
 
-            // If you pass a string to Von, it will write it to `options.output` file. If you pass `null,` Von will
+            // If you return a string here, it will be written to `options.output` file. If you pass `null,` Von will
             // simply ignore the return value and carry on WITHOUT writing anything. In the latter case, Von will assume
             // that you have handled writing to file yourself.
             .then(compiledTemplate => compiledTemplate);
