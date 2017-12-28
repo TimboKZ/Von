@@ -18,7 +18,7 @@ Install [Node.js](https://nodejs.org/en/), which will automatically install NPM.
 npm install -g von-gallery
 ```
 
-Now go into any folder on your computer with some images, open terminal, and simply run:
+Now go into any folder on your computer with some images, open a terminal window, and simply run:
 
 ```bash
 von -r
@@ -30,8 +30,8 @@ you can adjust this behaviour.
 
 # About
 
-Von was meant to be very simple to use. Most of the time, `von` command will be all you need. Of course, you can add
- specify some extra options - this can all be done by passing additional arguments to `von`, for example:
+Von was meant to be very simple to use. Most of the time, `von` command will be all you need. You can also specify some
+extra options - this can all be done by passing command line arguments to `von`, for example:
  
 ```bash
 von -o ./build/output.html -tp ./custom-template.pug --recursive
@@ -39,7 +39,7 @@ von -o ./build/output.html -tp ./custom-template.pug --recursive
 
 Alternatively, you can create a config file called `vonrc.js`. The config lets you do anything that command line
 arguments can do, plus a little extra. Namely, you can use the config to define groups and custom grouping/sorting
-functions. Once you have defined a config, simply run `von` in the same directory to use it. Check out this
+functions. Once you have defined a config, simply run `von` in the same directory. Check out this
 [example config](./test/config/vonrc.js) for more info.
 
 If you want to automate the process even further, you can add `von-gallery` as a dependency to your NPM project and use
