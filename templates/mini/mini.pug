@@ -29,14 +29,6 @@ html
                 padding: 5px;
             }
 
-            .group:first-of-type {
-                margin-top: 100px;
-            }
-
-            .group:last-of-type {
-                margin-bottom: 100px;
-            }
-
             .group .images {
                 display: flex;
                 align-items: center;
@@ -77,12 +69,12 @@ html
                 .images(data-layout=group.layout)
                     for image in group.images
                         .image-wrapper(data-src=image.path,
-                        style='flex:' + (image.dimensions.width / image.dimensions.height) + ';max-width:' + image.dimensions.width + 'px;')
+                        style='flex:' + (image.width / image.height) + ';max-width:' + image.width + 'px;')
                             a.image-link(href='#' + group.id)
                                 img.image(data-src=image.path)
                                 noscript
                                     img.image(src=image.path)
-                                .placeholder(style='padding-bottom: ' + ((image.dimensions.height / image.dimensions.width) * 100) + '%;')
+                                .placeholder(style='padding-bottom: ' + ((image.height / image.width) * 100) + '%;')
                 if group.source
                     div.source= 'Source: '
                         a(href=group.source)= group.source

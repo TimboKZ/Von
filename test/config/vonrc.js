@@ -12,9 +12,9 @@ module.exports = {
     description: 'This is an example Von gallery. Google "von-gallery" for more info.',
     definedGroupsOnly: false,
     recursive: true,
-    grouping: 'integer-prefix',
-    groupOrder: 'asc', // or 'desc'
-    imageOrder: 'asc', // or 'desc'
+    grouping: ['folder', 'integer-prefix', 'string-prefix'],
+    groupOrder: 'asc', // 'asc', 'desc', 'none' or your own sorting function
+    imageOrder: 'asc', // 'asc', 'desc', 'none' or your own sorting function
     schema: {},
     groups: [
         {
