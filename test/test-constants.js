@@ -7,20 +7,19 @@
 
 const path = require('path');
 
-/** @type {string} */
-let configDirPath = path.join(__dirname, 'config');
-
-/** @type {string} */
-let galleriesPath = path.join(__dirname, 'galleries');
+const utilDir = path.join(__dirname, 'util');
+const galleriesDir = path.join(__dirname, 'galleries');
+const tempDir = path.join(__dirname, 'temp');
 
 /**
  * @type {Object.<string, string>}
  */
 module.exports = {
-    configDirPath,
-    galleriesPath,
-    emptyDir: path.join(galleriesPath, 'empty-directory'),
-    noImagesDir: path.join(galleriesPath, 'no-images'),
-    imagesOnlyDir: path.join(galleriesPath, 'images-only'),
-    autoGroupsDir: path.join(galleriesPath, 'auto-groups'),
+    tempDir,
+    utilDir,
+    galleriesDir,
+    emptyDir: path.join(galleriesDir, 'empty-directory'),
+    noImagesDir: path.join(galleriesDir, 'no-images'),
+    imagesOnlyDir: path.join(galleriesDir, 'images-only'),
+    autoGroupsDir: path.join(galleriesDir, 'auto-groups'),
 };

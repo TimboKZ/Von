@@ -40,7 +40,7 @@ von -o ./build/output.html -tp ./custom-template.pug --recursive
 Alternatively, you can create a config file called `vonrc.js`. The config lets you do anything that command line
 arguments can do, plus a little extra. Namely, you can use the config to define groups and custom grouping/sorting
 functions. Once you have defined a config, simply run `von` in the same directory. Check out this
-[example config](./test/config/vonrc.js) for more info.
+[example config](test/util/vonrc.js) for more info.
 
 If you want to automate the process even further, you can add `von-gallery` as a dependency to your NPM project and use
 it as a CommonJS module, for example:
