@@ -3,12 +3,12 @@ html
     head
         meta(charset='utf-8')
 
-        meta(property='og:title', content=title)
+        meta(property='og:title', content=schema.title)
         title= title
 
 
-        meta(name='description', content=description)
-        meta(property='og:description', content=description)
+        meta(name='description', content=schema.description)
+        meta(property='og:description', content=schema.description)
 
         style(type='text/css').
             body {
@@ -26,20 +26,23 @@ html
             .group {
                 position: relative;
                 margin: 200px 0;
-                padding: 5px;
             }
 
             .group .images {
+                padding: 5px;
+            }
+
+            .row {
                 display: flex;
                 align-items: center;
                 justify-content: center;
             }
 
-            .group .image-wrapper {
+            .image-wrapper {
                 flex: 1.3;
             }
 
-            .group .image-link {
+            .image-link {
                 position: relative;
                 display: block;
                 margin: 5px;
@@ -64,20 +67,23 @@ html
             }
 
     body
-        for group in groups
+        for group in schema.groups
             .group(id=group.id)
-                .images(data-layout=group.layout)
-                    for image in group.images
-                        .image-wrapper(data-src=image.path,
-                        style='flex:' + (image.width / image.height) + ';max-width:' + image.width + 'px;')
-                            a.image-link(href='#' + group.id)
-                                img.image(data-src=image.path)
-                                noscript
-                                    img.image(src=image.path)
-                                .placeholder(style='padding-bottom: ' + ((image.height / image.width) * 100) + '%;')
+                .images
+                    for row in group.rows
+                        .row
+                            for image in row
+                                .image-wrapper(data-src=image.path,
+                                style='flex:' + (image.width / image.height) + ';max-width:' + image.width + 'px;')
+                                    a.image-link(href='#' + group.id)
+                                        img.image(data-src=image.path)
+                                        noscript
+                                            img.image(src=image.path)
+                                        .placeholder(style='padding-bottom: ' + ((image.height / image.width) * 100) + '%;')
                 if group.source
                     div.source= 'Source: '
                         a(href=group.source)= group.source
+
         link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/lightgallery@1.6.4/dist/css/lightgallery.min.css')
         script(src='https://code.jquery.com/jquery-3.2.1.min.js')
         script(src='https://cdn.jsdelivr.net/combine/npm/lightgallery,npm/lg-autoplay,npm/lg-fullscreen,npm/lg-hash,npm/lg-pager,npm/lg-share,npm/lg-thumbnail,npm/lg-video,npm/lg-zoom')

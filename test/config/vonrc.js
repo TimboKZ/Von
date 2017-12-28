@@ -8,6 +8,10 @@
  */
 
 module.exports = {
+    directory: './',
+    output: './index.html',
+    template: 'mini',
+    // templatePath: 'my-template.pug',
     title: 'Example Von Gallery',
     description: 'This is an example Von gallery. Google "von-gallery" for more info.',
     definedGroupsOnly: false,
@@ -19,6 +23,7 @@ module.exports = {
     groups: [
         {
             id: 2,
+            // By default, Von only supports the `id` group property, but your template might support more.
         },
     ],
 };

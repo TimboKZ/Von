@@ -24,6 +24,9 @@ class MiniTemplate {
     constructor(options, schema) {
         this.options = options;
         this.schema = schema;
+
+        // Default values
+        this.maxImagesPerRow = 6;
     }
 
     /**
@@ -47,7 +50,29 @@ class MiniTemplate {
      * @return {Promise.<VonSchema>}
      */
     processSchema() {
-        return Promise.resolve();
+        return Promise.resolve()
+            .then(() => {
+                for (let group of this.schema.groups) {
+                    // Calculate an optimal amount of images per row
+                    let count = group.images.length;
+                    let maxLeftover = -Infinity;
+                    let imagesPerRow = -1;
+                    for(let currImagesPerRow = this.maxImagesPerRow; currImagesPerRow > Math.floor(this.maxImagesPerRow * 0.75); currImagesPerRow--) {
+                        if (count % currImagesPerRow > maxLeftover) {
+                            maxLeftover = count % imagesPerRow;
+                            imagesPerRow = currImagesPerRow;
+                        }
+                    }
+
+                    let rows = [];
+                    let totalRows = Math.ceil(count / imagesPerRow);
+                    for (let i = 0; i < totalRows; i++) {
+                        rows.push(group.images.slice(i * imagesPerRow, (i + 1) * imagesPerRow - 1));
+                    }
+                    console.log(rows);
+                    group.rows = rows;
+                }
+            });
     }
 
     /**
@@ -57,7 +82,7 @@ class MiniTemplate {
         return Promise.resolve()
             .then(() => {
                 let fn = pug.compileFile(PUG_TEMPLATE);
-                return fn(this.schema);
+                return fn({schema: this.schema});
             });
     }
 
