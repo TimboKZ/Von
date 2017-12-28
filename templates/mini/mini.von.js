@@ -69,7 +69,6 @@ class MiniTemplate {
                     for (let i = 0; i < totalRows; i++) {
                         rows.push(group.images.slice(i * imagesPerRow, (i + 1) * imagesPerRow - 1));
                     }
-                    console.log(rows);
                     group.rows = rows;
                 }
             });

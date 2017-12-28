@@ -1,6 +1,6 @@
 {
   "name": "von-gallery",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Elegant single page gallery generator.",
   "main": "index.js",
   "scripts": {

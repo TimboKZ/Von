@@ -6,7 +6,6 @@ html
         meta(property='og:title', content=schema.title)
         title= title
 
-
         meta(name='description', content=schema.description)
         meta(property='og:description', content=schema.description)
 
@@ -73,12 +72,12 @@ html
                     for row in group.rows
                         .row
                             for image in row
-                                .image-wrapper(data-src=image.path,
+                                .image-wrapper(data-src=image.url,
                                 style='flex:' + (image.width / image.height) + ';max-width:' + image.width + 'px;')
                                     a.image-link(href='#' + group.id)
-                                        img.image(data-src=image.path)
+                                        img.image(data-src=image.url)
                                         noscript
-                                            img.image(src=image.path)
+                                            img.image(src=image.url)
                                         .placeholder(style='padding-bottom: ' + ((image.height / image.width) * 100) + '%;')
                 if group.source
                     div.source= 'Source: '
@@ -92,7 +91,9 @@ html
         script(type='text/javascript').
             $(document).ready(function () {
                 var images = $('.images');
-                images.lightGallery({});
+                images.lightGallery({
+                    selector: '.image-wrapper'
+                });
                 $('.image').Lazy({
                     threshold: (window.screen.height || 2000) * 2,
                     effect: 'fadeIn',
