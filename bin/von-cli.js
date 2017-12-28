@@ -85,6 +85,12 @@ parser.addArgument(['-s', '--schema'], {
     constant: true,
     defaultValue: null,
 });
+parser.addArgument(['-po', '--print-options'], {
+    action: 'storeConst',
+    help: 'print command line options without doing anything',
+    constant: true,
+    defaultValue: null,
+});
 
 const args = parser.parseArgs();
 let options = {};
@@ -94,7 +100,9 @@ for (let key in args) {
     options[camelized] = args[key];
 }
 
-if (options.schema) {
+if (options.printOptions) {
+    console.log(options);
+} else if (options.schema) {
     // Use a magic string to make sure `undefined` is still printed
     let specialString = '%Von-Magic-String$';
     const replacer = (k, v) => v === undefined ? specialString : v;
