@@ -101,5 +101,6 @@ if (options.schema) {
     Von.generateSchema(options)
         .then(schema => console.log(JSON.stringify(schema, replacer, 2).replace(new RegExp(`"${specialString}"`, 'g'), 'undefined')));
 } else {
-    Von.run(options);
+    Von.run(options)
+        .catch(error => console.error(error));
 }
