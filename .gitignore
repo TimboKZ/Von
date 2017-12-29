@@ -2,6 +2,9 @@
 /.idea/
 *.swp
 
+# DLL for Windows shell menu
+/shell-menu.dll
+
 # Logs
 logs
 *.log
