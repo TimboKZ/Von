@@ -22,8 +22,7 @@ describe('Von (without config)', () => {
 
     it('should not crash and create no output on an empty directory', () =>
         Promise.resolve()
-            .then(() => fse.rmdir(constants.emptyDir))
-            .then(() => fse.mkdir(constants.emptyDir))
+            .then(() => fse.ensureDir(constants.emptyDir))
             .then(() => Von.run({directory: constants.emptyDir}))
             .then(() => fse.readdir(constants.emptyDir))
             .then(files => assert.equal(files.length, 0))
