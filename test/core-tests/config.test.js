@@ -10,15 +10,17 @@ const assert = require('chai').assert;
 const fs = require('fs');
 const path = require('path');
 const Promise = require('bluebird');
-const constants = require('./test-constants');
+const constants = require('../test-constants');
 
-const Von = require('../lib/Von');
-const OptionsParser = require('../lib/OptionsParser');
+const Von = require('../../lib/Von');
+const OptionsParser = require('../../lib/OptionsParser');
 
 // Variables for different tests
 let configPath = path.join(constants.utilDir, 'vonrc.js');
 
-describe('Von with config', () => {
+describe('Mini template', () => {
+
+    assert.equal(configPath.template, 'mini');
 
     it('should not generate any errors on example config', () =>
         Promise.resolve()
