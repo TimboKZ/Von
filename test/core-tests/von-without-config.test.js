@@ -10,9 +10,9 @@ const assert = require('chai').assert;
 const path = require('path');
 const Promise = require('bluebird');
 const fse = require('fs-extra');
-const constants = require('./test-constants');
+const constants = require('../test-constants');
 
-const Von = require('../lib/Von');
+const Von = require('../../lib/Von');
 
 // Variables for different tests
 let outputFile = 'von.html';
@@ -22,8 +22,7 @@ describe('Von (without config)', () => {
 
     it('should not crash and create no output on an empty directory', () =>
         Promise.resolve()
-            .then(() => fse.rmdir(constants.emptyDir))
-            .then(() => fse.mkdir(constants.emptyDir))
+            .then(() => fse.ensureDir(constants.emptyDir))
             .then(() => Von.run({directory: constants.emptyDir}))
             .then(() => fse.readdir(constants.emptyDir))
             .then(files => assert.equal(files.length, 0))
