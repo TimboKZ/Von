@@ -2,6 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/von-gallery.svg)]()
 [![npm](https://img.shields.io/npm/dt/von-gallery.svg)](https://www.npmjs.com/package/von-gallery)
+[![Build Status](https://travis-ci.org/TimboKZ/Von.svg?branch=master)](https://travis-ci.org/TimboKZ/Von)
 
 🖼️🤔 Node.js generator for (static) single page galleries. The default template is responsive and supports lazy loading.
 Available as a CommonJS module and as a command line tool.

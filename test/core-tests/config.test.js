@@ -18,9 +18,7 @@ const OptionsParser = require('../../lib/OptionsParser');
 // Variables for different tests
 let configPath = path.join(constants.utilDir, 'vonrc.js');
 
-describe('Mini template', () => {
-
-    assert.equal(configPath.template, 'mini');
+describe('Von with config', () => {
 
     it('should not generate any errors on example config', () =>
         Promise.resolve()
