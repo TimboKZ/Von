@@ -35,7 +35,7 @@ let defineFlag = (name, short, help) => {
     });
 };
 
-defineParameter('directory', 'd', '<path>', 'directory where images are located', undefined, process.cwd());
+defineParameter('directory', 'd', '<path>', 'directory where images are located', undefined, true);
 defineParameter('output', 'o', '<path>', 'file to which Von HTML will be written');
 defineParameter('template', 't', '<name>', 'built-in template to use');
 defineParameter('template-path', 'tp', '<path>', 'custom template path');
@@ -55,5 +55,6 @@ defineFlag('defined-groups-only', 'dgo', 'only include the groups from the confi
 defineFlag('recursive', 'r', 'discover images recursively');
 defineFlag('schema', 's', 'print the schema without building the gallery');
 defineFlag('print-options', 'po', 'print command line options without doing anything');
+defineFlag('print-config', 'pc', 'print config that will be used for generation without doing anything');
 
 module.exports = parser;
